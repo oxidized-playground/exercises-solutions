@@ -1,4 +1,5 @@
 use serde::{Deserialize, Serialize};
+use serde_json::Serialize;
 use std::{str, time};
 
 mod net;
@@ -9,6 +10,32 @@ pub struct Message {
     content: String,
 }
 
+trait ChatChecker {
+    fn check_sum(self) -> bool;
+}
+
+impl ChatChecker for net::client::Client {
+    fn check_sum(self) -> bool {
+        self.read().contains("ALTEN")
+    }
+}
+
+trait ALTENChatter {
+    fn write(self, message: &str);
+    fn read(self) -> String;
+}
+
+impl ALTENChatter for net::client::Client {
+    fn write(self, message: &str) {
+        todo!()
+        self.send(message);
+    }
+
+    fn read(self) -> String {
+        todo!()
+    }
+}
+
 type ErrorMessage = std::string::String;
 
 #[tokio::main]
@@ -17,10 +44,13 @@ async fn main() -> Result<(), ErrorMessage> {
 }
 
 async fn main_loop() -> Result<(), ErrorMessage> {
-    let remote_address = "127.0.0.1:8080";
+    let remote_address = "mx.kb7.nl:8080";
     let mut client = net::client::Client::new(remote_address).await?;
 
-    let message = "{\"sender\":\"MyName\",\"content\":\"Hello!\"}";
+    let msg = Message(sender: "K", content: "AAAA");
+let message = serde_json::t(msg);
+
+    // let message = "{\"sender\":\"Koen\",\"content\":\"Hello!\"}";
     client.send(message).await?;
 
     let mut buf = [0; 1024];
