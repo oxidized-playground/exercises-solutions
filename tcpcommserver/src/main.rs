@@ -3,6 +3,8 @@ use std::{io, str};
 use tokio::{
     io::{AsyncReadExt, AsyncWriteExt},
     net::{TcpListener, TcpStream},
+    sync::Mutex,
+    time::{interval, Interval}
 };
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -18,7 +20,15 @@ async fn process(mut socket: TcpStream) -> io::Result<()> {
 
     println!("Started connection to {}", socket.peer_addr()?);
 
+
+    let period = std::time::Duration::from_millis(500);
+    let interval: Mutex<Interval> = Mutex::new(interval(period));
+
+
     loop {
+        let mut wait = interval.lock().await;
+        wait.tick().await;
+
         let amount_read = socket.read(&mut buf).await?;
         if amount_read == 0 {
             println!("Dropped connection to {}", socket.peer_addr()?);

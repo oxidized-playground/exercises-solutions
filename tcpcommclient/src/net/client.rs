@@ -18,7 +18,7 @@ impl Client {
         Ok(Client { socket })
     }
 
-    pub async fn send(&mut self, message: &str) -> Result<(), ErrorMessage> {
+    pub async fn send(&mut self, message: &String) -> Result<(), ErrorMessage> {
         println!("Sending message {} to server", message);
         self.socket
             .write_all(message.as_bytes())
