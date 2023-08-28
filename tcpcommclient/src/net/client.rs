@@ -28,8 +28,9 @@ impl Client {
         Ok(())
     }
 
-    pub async fn read(&mut self, buf: &mut [u8]  ) -> Result<usize, ErrorMessage> {
-        let amount_read = self.socket
+    pub async fn read(&mut self, buf: &mut [u8]) -> Result<usize, ErrorMessage> {
+        let amount_read = self
+            .socket
             .read(buf)
             .await
             .map_err(|e| format!("Could not receive data {}", e))?;

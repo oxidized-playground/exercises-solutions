@@ -5,11 +5,6 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+# Add flags to release profile for a minimal size build
+# Tip: Can you optimize for size? Have Link Time Optimization? Remove debug information?
 [profile.release]
-strip = true
-opt-level = "z"
-lto = true
-panic = "abort"
-codegen-units = 1
-
-[dependencies]

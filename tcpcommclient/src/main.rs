@@ -1,3 +1,4 @@
+use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
 use std::{str, time};
 
@@ -9,31 +10,32 @@ pub struct Message {
     content: String,
 }
 
-// trait ChatChecker {
-//     fn check_sum(self) -> bool;
-// }
+#[async_trait]
+trait ALTENChatter {
+    async fn write_message(&mut self, message: &Message) -> Result<(), ErrorMessage>;
+    async fn read_message(&mut self) -> Result<Message, ErrorMessage>;
+}
 
-// impl ChatChecker for net::client::Client {
-//     fn check_sum(self) -> bool {
-//         self.read().contains("ALTEN")
-//     }
-// }
+#[async_trait]
+impl ALTENChatter for net::client::Client {
+    async fn write_message(&mut self, message: &Message) -> Result<(), ErrorMessage> {
+        // todo!();
+        let message = serde_json::to_string(&message).unwrap();
+        self.send(&message).await
+    }
 
-// trait ALTENChatter {
-//     fn write(&mut self, message: &String);
-//     fn read(self) -> String;
-// }
+    async fn read_message(&mut self) -> Result<Message, ErrorMessage> {
+        // todo!()
+        let mut buf = [0; 1024];
+        let amount_read = self.read(&mut buf).await?;
 
-// impl ALTENChatter for net::client::Client {
-//     fn write(&mut self, message: &String) {
-//         // todo!();
-//         self.send(message);
-//     }
+        let message_buf = &buf[..amount_read];
+        let message_str =
+            str::from_utf8(message_buf).map_err(|e| format!("Message is not UTF8: {}", e))?;
 
-//     fn read(self) -> String {
-//         todo!()
-//     }
-// }
+        serde_json::from_str(&message_str).map_err(|e| format!("Error in decoding json: {}", e))
+    }
+}
 
 type ErrorMessage = std::string::String;
 
@@ -46,22 +48,15 @@ async fn main_loop() -> Result<(), ErrorMessage> {
     let remote_address = "localhost:8080";
     let mut client = net::client::Client::new(remote_address).await?;
 
-    let msg = Message{sender: String::from("K"), content: String::from("AAAA")};
-    let message = serde_json::to_string(&msg).unwrap();
+    let msg = Message {
+        sender: String::from("Koen"),
+        content: String::from("AAAA"),
+    };
 
-    // let message = "{\"sender\":\"Koen\",\"content\":\"Hello!\"}";
-    
-
-    let mut buf = [0; 1024];
     loop {
-        client.send(&message).await?;
-        
-        let amount_read = client.read(&mut buf).await?;
-
-        let message_buf = &buf[..amount_read];
-        let message_str =
-            str::from_utf8(message_buf).map_err(|e| format!("Message is not UTF8: {}", e))?;
-        println!("Received: {:?}", message_str);
+        client.write_message(&msg).await?;
+        let reply = client.read_message().await?;
+        println!("Received: {:?}", reply);
 
         let ten_seconds = time::Duration::from_millis(10);
         std::thread::sleep(ten_seconds);
