@@ -1,34 +1,38 @@
 # exercises
 
+## 0. Introduction
 
-## Rustlings 
+You can run the tests either in vscode by clicking Run / Run Tests inline in the rs files. Alternatively you may use `cargo run` / `cargo test`` to execute the assignments.
 
-  ### Variable (5 min)
-      Example with one variable, reader has to add another with a different type
-      Try to modify the variable after declaration and print the new value
+All exercises require you to create an implementation for them.
+Some require you to add arguments to the function in order to match the tests.
 
+## 1. Variable
 
-  ### Primitive types (1 min)
+Example with one variable, reader has to add another with a different type
+Try to modify the variable after declaration and print the new value
 
-  ### Functions (10 min)
-    Return syntax - Last expression is returned      
-    Return type syntax
-
-  ### Strings (5 min)
+## 2. Primitive types
 
 
-  ### Can it go smaller (10 min)
+## 3. Functions
+Introduces function syntax and implicit return line.
+This exercise is split in 4 parts to help you run tests before all code is valid rust syntax. Note that tests have to be enabled to validate your implementation!
 
-## Comprehensive rust (15 - 20 min)
- 
-  - Use rustdoc to view documentation on a book
-  - Library implementation
-  - Run clippy
-  - Create a test that verifies the oldest book in the library
+
+## 4. Strings
+Introduction of strings, managed in heap and immutable references somewhere in memory. 
+
+
+## 5. Can it go smaller
+The Cargo exercise, can you trim a rust binary to a smaller size? Add compiler flags to strip information you do not need to run the binary.
+In the solution of this exercise we have a creative work around to trim it down, can you approach that?
+
+## 6. Library
   
+Larger exercise to put all learnings into action. 
 
-
-## TCP Challenge (10)
-
-  - Connect to online ALTEN environment and post a message
-  - TODO: TODO: IMPLEMENT RATE LIMIT OR THIS WILL GO WRONG
+  - Library implementation to manage books
+  - Use rustdoc to view documentation on the code
+  - Run clippy to check your code (`cargo clippy`)
+  - Create a test that verifies the oldest book in the library
