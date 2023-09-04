@@ -38,8 +38,6 @@ fn slice_first_five<'a>(s: &'a String) -> &'a str {
     &s[0..5]
 }
 
-// Test to push_str() 
-
 #[cfg(test)]
 mod tests {
     use crate::{wise_saying, create_some_wise_words, string_welder, slice_first_five};
