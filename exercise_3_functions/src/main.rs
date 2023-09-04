@@ -1,5 +1,6 @@
 /**
  * Welcome to the ALTEN rust playground. In this exercise you will create a new variable and print its content.
+ * Start with part A and work up to D. Part D is optional if you run out of time.
  */
 
  pub mod a_add_numbers;
