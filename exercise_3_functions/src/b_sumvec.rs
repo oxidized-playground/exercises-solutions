@@ -1,5 +1,3 @@
-// Uncomment the function and tests!
-
 // // Returns the sum of given integer vector
 // /
 // / # Arguments

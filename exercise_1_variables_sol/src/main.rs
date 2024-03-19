@@ -2,11 +2,13 @@
  * Welcome to the ALTEN rust playground. In this exercise you will create a new variable and print its content.
  *
  * To run this exercise you can either use the build in tools of VSCode or start via `cargo run` in this directory.
+ *
  */
 fn main() {
     // Introduce another variable here to make the print statement work
 
-    let mut x = 10;
+    // Mutable variable x of type int 32
+    let mut x: i32 = 10;
     let y = 3.4;
     println!("Hello, world! X: {}, Y: {}", x, y);
 
