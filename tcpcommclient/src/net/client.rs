@@ -3,7 +3,7 @@ use tokio::{
     net::TcpStream,
 };
 
-type ErrorMessage = std::string::String;
+type ErrorMessage = String;
 
 pub struct Client {
     socket: TcpStream,
@@ -18,7 +18,7 @@ impl Client {
         Ok(Client { socket })
     }
 
-    pub async fn send(&mut self, message: &String) -> Result<(), ErrorMessage> {
+    pub async fn send(&mut self, message: &str) -> Result<(), ErrorMessage> {
         println!("Sending message {} to server", message);
         self.socket
             .write_all(message.as_bytes())
@@ -28,7 +28,18 @@ impl Client {
         Ok(())
     }
 
-    pub async fn read(&mut self, buf: &mut [u8]) -> Result<usize, ErrorMessage> {
+    pub async fn read(&mut self) -> Result<String, ErrorMessage> {
+        let mut buf = [0; 1024];
+        let amount_read = self.read_bytes(&mut buf).await?;
+
+        let message_buf = &buf[..amount_read];
+        let message_str = String::from_utf8(Vec::from(message_buf))
+            .map_err(|e| format!("Message is not UTF8: {}", e))?;
+
+        Ok(message_str)
+    }
+
+    pub async fn read_bytes(&mut self, buf: &mut [u8]) -> Result<usize, ErrorMessage> {
         let amount_read = self
             .socket
             .read(buf)
