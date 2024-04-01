@@ -13,17 +13,15 @@ pub struct Message {
     content: String,
 }
 
-type ErrorMessage = std::string::String;
+type ErrorMessage = String;
 
 async fn process(mut socket: TcpStream) -> io::Result<()> {
     let mut buf = [0; 1024];
 
     println!("Started connection to {}", socket.peer_addr()?);
 
-
     let period = std::time::Duration::from_millis(500);
     let interval: Mutex<Interval> = Mutex::new(interval(period));
-
 
     loop {
         let mut wait = interval.lock().await;
@@ -35,13 +33,9 @@ async fn process(mut socket: TcpStream) -> io::Result<()> {
             return Ok(())
         }
 
-        let response_str = match response(&buf[..amount_read]) {
-            Ok(response_str) => response_str,
-            Err(e) => {
-                println!("Error in building response {}", e);
-                format!("Error in building response {}", e)
-            }
-        };
+        let response_str = response(&buf[..amount_read]).unwrap_or_else(|e| {
+            format!("💀 {}", e)
+        });
 
         socket.write_all(response_str.as_bytes()).await?;
     }
@@ -67,7 +61,7 @@ fn response(message_buf: &[u8]) -> Result<String, ErrorMessage> {
 
     let response_message = Message {
         sender: "Server".to_string(),
-        content: format!("greetings from {}", message.sender),
+        content: format!("greetings {}", message.sender),
     };
 
     serde_json::to_string(&response_message)
