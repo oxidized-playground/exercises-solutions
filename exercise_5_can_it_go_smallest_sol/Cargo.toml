@@ -6,7 +6,7 @@
 # Find flags to reduce the release binary in size. Add them to profile.release
 
 [package]
-name = "exercise_5_can_it_go_smaller"
+name = "exercise_5_can_it_go_smallest"
 version = "0.1.0"
 edition = "2021"
 
