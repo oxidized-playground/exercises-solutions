@@ -12,7 +12,7 @@ pub fn sumvec(v: &Vec<i32>) -> i32 {
 
 #[cfg(test)]
 mod tests {
-    use crate::b_sumvec::sumvec;
+    use crate::part_2_sumvec::sumvec;
 
     #[test]
     fn test_sumvec() {

@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 /// Divide given inputs where the result is a / b.
 /// If b equals to 0.0 the error "Cannot divide by zero" is returned.
 ///
@@ -29,7 +31,7 @@ pub fn divide_custom_error(a: f64, b: f64) -> Result<f64, String> {
 
 #[cfg(test)]
 mod tests {
-    use crate::c_divide::{divide, divide_custom_error};
+    use crate::part_3_divide::{divide, divide_custom_error};
 
     #[test]
     fn test_divide() {

@@ -1,3 +1,5 @@
+#![allow(unused_variables)]
+
 /**
  * Welcome to the ALTEN rust playground. In this exercise you will create a new variable and print its content.
  *
