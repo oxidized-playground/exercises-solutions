@@ -27,6 +27,14 @@ pub fn divide(a: f64, b: f64) -> Result<f64, &'static str> {
 /// * `b` - The divisor of the operation
 pub fn divide_custom_error(a: f64, b: f64) -> Result<f64, String> {
     divide(a, b).map_err(|e| format!("Division error! {}", e))
+
+    // alternative ending
+    // let result = divide(a, b);
+    // if result.is_err() {
+    //     Err(format!("Division error! {}", result.unwrap_err()))
+    // } else {
+    //     Ok(result.unwrap())
+    // }
 }
 
 #[cfg(test)]
