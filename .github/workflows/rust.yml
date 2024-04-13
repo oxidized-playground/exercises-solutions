@@ -20,7 +20,6 @@ jobs:
         - exercise_3_strings_sol
         - exercise_4_functions_sol
         - exercise_5_can_it_go_smaller_sol
-        - exercise_5_can_it_go_smallest_sol
         - exercise_6_library_sol
         - tcpcommclient
         - tcpcommserver
