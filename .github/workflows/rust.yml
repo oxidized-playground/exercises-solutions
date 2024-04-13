@@ -1,0 +1,36 @@
+name: Rust
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        crate: 
+        - exercise_1_variables_sol
+        - exercise_2_primitive_types_sol
+        - exercise_3_strings_sol
+        - exercise_4_functions_sol
+        - exercise_5_can_it_go_smaller_sol
+        - exercise_6_library_sol
+        - tcpcommclient
+        - tcpcommserver
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build
+      run: cargo build --verbose
+      working-directory: ${{ matrix.crate }}
+    - name: Run tests
+      run: cargo test --verbose
+      working-directory: ${{ matrix.crate }}
