@@ -1,11 +1,11 @@
 #![allow(dead_code)]
 
-/// Optional assignment to work with enums.
+//! Optional assignment to work with enums.
 
 /// Enum with 4 operations
-/// 
+///
 /// # Values
-/// 
+///
 /// * `Add` - Adds the given values
 /// * `Sub` - Subtracts the given values
 /// * `Mul` - Multiplies the given values

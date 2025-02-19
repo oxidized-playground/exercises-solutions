@@ -1,4 +1,4 @@
-// Uncomment this file!
+/// Uncomment this file!
 
 /// Returns the sum of given integer vector
 ///
@@ -6,7 +6,7 @@
 ///
 /// * `v` - A vector containing integers
 ///
-pub fn sumvec(v: &Vec<i32>) -> i32 {
+pub fn sumvec(v: &[i32]) -> i32 {
     v.iter().sum()
 }
 
@@ -16,7 +16,7 @@ mod tests {
 
     #[test]
     fn test_sumvec() {
-        let result = sumvec(&vec![2, 3, 4]);
+        let result = sumvec(&[2, 3, 4]);
         assert_eq!(9, result);
     }
 }

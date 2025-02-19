@@ -1,18 +1,14 @@
 #![allow(unused_variables)]
 
-/**
- * Welcome to the ALTEN rust playground. In this exercise you will create a new variable and print its content.
- *
- * To run this exercise you can run tests via `cargo test` or run using `cargo run` in this directory.
- *
- */
+//! Welcome to the ALTEN rust playground. In this exercise you will create a new variable and print its content.
+//!
+//! To run this exercise you can run tests via `cargo test` or run using `cargo run` in this directory.
 
 pub mod part_1_add_numbers;
 use part_1_add_numbers::add_these_numbers;
 pub mod part_2_sumvec;
 pub mod part_3_divide;
 pub mod part_4_calculate;
-
 
 fn main() {
     // part 1 Enable the functions if you want to print some results. Tests will validate your implementations
@@ -23,7 +19,7 @@ fn main() {
 
     // Part 2, enable the following lines and fill in the function
     use part_2_sumvec::sumvec;
-    let sum = sumvec(&vec![2, 3, 4]);
+    let sum = sumvec(&[2, 3, 4]);
     println!("Sum of the vector is {}", sum);
 
     // Part 3, enable the following lines and fill in the function
