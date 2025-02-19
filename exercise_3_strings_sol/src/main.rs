@@ -1,18 +1,14 @@
 #![allow(unused_variables)]
 
-/**
- * Welcome to the ALTEN rust playground. In this exercise you will create some strings.
- * Did you know String allocates on the heap and str immutable stored _somewhere_?
- *
- * To run this exercise you can run tests via `cargo test` or run using `cargo run` in this directory.
- *
- */
+//! Welcome to the ALTEN rust playground. In this exercise you will create some strings.
+//! Did you know String allocates on the heap and str immutable stored _somewhere_?
+//!
+//! To run this exercise you can run tests via `cargo test` or run using `cargo run` in this directory.
 
 fn main() {
     // Create a string with some wise words
     println!("Hello, {}", wise_saying());
     println!("Hello, {}", create_some_wise_words());
-
 
     // String welding
     let s1: String = "Hello".to_string();
@@ -20,37 +16,35 @@ fn main() {
     let s3 = string_welder(s1, s2);
     println!("{}", s3);
 
-
     // Take a slice 🍕️
     let s: String = "Hello, Rust!".to_string();
     let slice: &str = slice_first_five(&s);
     println!("{}", slice);
 }
 
-
-// Return a str with "wise!"
+/// Return a str with "wise!"
 fn wise_saying() -> &'static str {
     "wise!"
 }
 
-// Return a String with "SomeWords"
+/// Return a String with "SomeWords"
 fn create_some_wise_words() -> String {
     String::from("SomeWords")
 }
 
-// Return concatenation of 'a + " " + b'
+/// Return concatenation of 'a + " " + b'
 fn string_welder(a: String, b: String) -> String {
     a + " " + &b
 }
 
-// Return a str slice of the first 5 characters
-fn slice_first_five<'a>(s: &'a String) -> &'a str {
+/// Return a str slice of the first 5 characters
+fn slice_first_five(s: &str) -> &str {
     &s[0..5]
 }
 
 #[cfg(test)]
 mod tests {
-    use crate::{wise_saying, create_some_wise_words, string_welder, slice_first_five};
+    use crate::{create_some_wise_words, slice_first_five, string_welder, wise_saying};
 
     #[test]
     fn test_wise_saying() {
