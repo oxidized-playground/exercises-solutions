@@ -13,7 +13,7 @@ fn main() {
     // String welding
     let s1: String = "Hello".to_string();
     let s2: String = "Rust".to_string();
-    let s3 = string_welder(s1, s2);
+    let s3 = string_welder(s1, &s2);
     println!("{}", s3);
 
     // Take a slice 🍕️
@@ -33,8 +33,8 @@ fn create_some_wise_words() -> String {
 }
 
 /// Return concatenation of 'a + " " + b'
-fn string_welder(a: String, b: String) -> String {
-    a + " " + &b
+fn string_welder(a: String, b: &String) -> String {
+    a + " " + b
 }
 
 /// Return a str slice of the first 5 characters
