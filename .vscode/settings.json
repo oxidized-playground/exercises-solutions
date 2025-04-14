@@ -14,5 +14,6 @@
         "./exercise_6_library_sol/Cargo.toml",
         "./tcpcommclient/Cargo.toml",
         "./tcpcommserver/Cargo.toml",
+        "./example_pattern_matching/Cargo.toml"
     ]
 }
