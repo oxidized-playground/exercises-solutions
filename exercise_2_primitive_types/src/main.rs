@@ -9,7 +9,7 @@ fn main() {
     let p: &str = "🍕️";
     println!("Hello, world! We have {}? {}", p, x);
 
-    // Create an array of 5 integers and print all of them
+    // Create an array of 5 integers as i32's, and print all of them
 
     // Create tuple of 2 values and print the tuple
 }

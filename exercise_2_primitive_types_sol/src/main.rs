@@ -18,7 +18,7 @@ fn main() {
     // You can also print complete objects using the debug formatter :?
     println!("{:?}", list);
 
-    // Create tuple of 2 values
+    // Create tuple of 2 values and print the tuple
     let tup = (34, 36);
     println!("{:?}", tup);
 }

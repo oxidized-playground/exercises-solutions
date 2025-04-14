@@ -70,6 +70,10 @@ impl Library {
     }
 }
 
+// This shows the desired behavior. Uncomment the code below and
+// implement the missing methods. You will need to update the
+// method signatures, including the "self" parameter! You may
+// also need to update the variable bindings within main.
 fn main() {
     let mut library = Library::new();
 
@@ -94,6 +98,7 @@ fn main() {
     library.print_books();
 }
 
+// Make all these tests pass
 #[cfg(test)]
 mod tests {
     use crate::Book;

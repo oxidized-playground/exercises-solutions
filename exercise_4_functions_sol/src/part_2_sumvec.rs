@@ -1,4 +1,4 @@
-/// Uncomment this file!
+//! Uncomment this file!
 
 /// Returns the sum of given integer vector
 ///

@@ -60,7 +60,8 @@ mod tests {
 
     #[test]
     fn test_string_welder() {
-        let result = string_welder("Hello".to_string(), "Rust".to_string());
+        let rust = "Rust".to_string();
+        let result = string_welder("Hello".to_string(), &rust);
         assert_eq!(result, String::from("Hello Rust"));
     }
 

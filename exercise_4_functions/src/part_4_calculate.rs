@@ -1,6 +1,6 @@
 #![allow(dead_code)]
 
-/// Optional assignment to work with enums. Enable the test below the functions!
+//! Optional assignment to work with enums.
 
 /// Enum with 4 operations
 /// 

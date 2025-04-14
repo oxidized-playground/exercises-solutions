@@ -1,9 +1,8 @@
 #![allow(unused_variables)]
 
-/**
- * Welcome to the ALTEN rust playground. In this exercise you will create a new variable and print its content.
- * Start with part A and work up to D. Part D is optional if you run out of time.
- */
+//! Welcome to the ALTEN rust playground. In this exercise you will create a new variable and print its content.
+//!
+//! To run this exercise you can run tests via `cargo test` or run using `cargo run` in this directory.
 
 pub mod part_1_add_numbers;
 use part_1_add_numbers::add_these_numbers;
@@ -11,7 +10,6 @@ pub mod part_2_sumvec;
 pub mod part_3_divide;
 pub mod part_4_calculate;
 
- 
 fn main() {
     // part 1 Enable the functions if you want to print some results. Tests will validate your implementations
     println!(
